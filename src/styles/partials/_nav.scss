@@ -8,17 +8,32 @@ nav {
       display: inline-block;
       padding-right: 35px;
 
+      span {
+        font-weight: 500;
+        font-size: 18px;
+        color: #f7bf00;
+        background: #eee;
+        padding: 1px 6px;
+        border-radius: 5px;
+      }
+
       a {
         text-decoration: none;
         color: #2A6D7F;
 
         &.active {
-          border-bottom: #ddd solid 4px;
+          background: #d03e00;
+          padding: 6px 7px;
+          border-radius: 5px;
+          color: #fff;
+
         }
       }
 
       &:first-child {
         float: left;
+        margin-top: -2px;
+        color: #2A6D7F;
       }
 
       &:last-child {

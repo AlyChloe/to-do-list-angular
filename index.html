@@ -31,14 +31,19 @@
     <main>
       <nav>
         <ul>
-          <li>Items Left <span>{{todo.count}}</span></li>
-          <li><a href="#" class="active" ng-click="checkFilter = {checked}">All</a></li>
-          <li><a href="#" ng-click="checkFilter = {checked: false}">Active</a></li>
-          <li><a href="#" ng-click="checkFilter = {checked: true}">Completed</a></li>
+          <li>Items Left: <span>{{todo.count}}</span></li>
+          <li ng-repeat="nav in todo.navList">
+            <a
+              href="#"
+              ng-click="todo.checkFilter = {checked: nav.check}; todo.select(nav.title)"
+              ng-class="{'active' : todo.isActive(nav.title)}">
+              {{nav.title}}
+            </a>
+          </li>
           <li><a href="#" ng-click="todo.removeAll()">Clear Completed</a></li>
         </ul>
       </nav>
-      <div class="item-container" ng-repeat="item in todo.todos | filter: checkFilter" ng-cloak>
+      <div class="item-container" ng-repeat="item in todo.todos | filter: todo.checkFilter" ng-cloak>
         <div class="check" ng-click="todo.check(item)"><i ng-show="item.checked" class="fa fa-check" aria-hidden="true"></i></div>
         <h3 inline-edit="item.todo"
           inline-edit-placeholder="Type your value here"

@@ -7,11 +7,26 @@ angular.module('app', ['angularInlineEdit', 'LocalStorageModule'])
   this.allStoredItems = [];
   this.todos = [];
   this.count = 0;
-  this.class = 'active';
+  this.checkFilter;
+  /*****************************
+  Filter
+  *****************************/
+  this.navList = [
+    {title: 'All'},
+    {title: 'Active', check: false},
+    {title: 'Completed', check: true}
+  ]
+  this.select = function(item) {
+    self.selected = item;
+  };
+  this.isActive = function(item) {
+    return self.selected === item;
+  };
   /*****************************
   Page loads with current localstorage
   *****************************/
   this.todos = storageService.getAllItems()
+  this.count = this.todos.length;
   /*****************************
   User input storing as object
   *****************************/
@@ -50,12 +65,18 @@ angular.module('app', ['angularInlineEdit', 'LocalStorageModule'])
     }
   }
   /*****************************
-  Delete all items and clearing from localstorage
+  Delete all completed items and clearing from localstorage
   *****************************/
   this.removeAll = function() {
-    self.todos = [];
-    self.todos = self.allStoredItems;
-    storageService.storeAllItems(self.allStoredItems);
+    for(var i = 0; i < self.todos.length; i++) {
+      if(self.todos[i].checked === true) {
+        var index = self.todos.indexOf(self.todos[i]);
+        if (index > -1) {
+          self.todos.splice(index, 1);
+          storageService.storeAllItems(self.todos);
+        }
+      }
+    }
   }
 
 });

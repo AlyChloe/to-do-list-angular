@@ -4,14 +4,18 @@ main {
 
   .item-container {
     overflow: hidden;
-    padding: 10px 0;
+    padding: 15px;
+    background: #eee;
+    margin-bottom: 20px;
+    border-radius: 5px;
 
     .check {
       float: left;
       margin-right: 30px;
       width: 46px;
       height: 46px;
-      background: #50757F;
+      background: #f7bf00;
+      border-radius: 5px;
 
       .fa {
         font-size: 30px;
@@ -29,7 +33,10 @@ main {
 
       .ng-inline-edit__input {
         font-size: 35px;
-        font-weight: bold;
+        font-weight: 300;
+        margin-top: -5px;
+        background: #eee;
+        color: #78B0BF;
       }
     }
 
