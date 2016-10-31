@@ -1,0 +1,26 @@
+.logo {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 70px 0;
+  background: rgba(94,161,178, .6);
+
+  img {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 35px;
+    color: #fff;
+    padding-top: 20px;
+  }
+
+  video {
+    position: absolute;
+    z-index: -1;
+    top: -400px;
+  }
+}

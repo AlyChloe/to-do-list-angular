@@ -1,0 +1,30 @@
+nav {
+  text-align: center;
+  padding-bottom: 30px;
+
+  ul {
+
+    li {
+      display: inline-block;
+      padding-right: 35px;
+
+      a {
+        text-decoration: none;
+        color: #2A6D7F;
+
+        &.active {
+          border-bottom: #ddd solid 4px;
+        }
+      }
+
+      &:first-child {
+        float: left;
+      }
+
+      &:last-child {
+        float: right;
+        padding-right: 0;
+      }
+    }
+  }
+}

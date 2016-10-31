@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>To Do List</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bower_components/ng-inline-edit/dist/ng-inline-edit.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500" rel="stylesheet">
+    <script src="https://use.fontawesome.com/6cd4df7820.js"></script>
+    <link rel="stylesheet" href="lib/styles/main.min.css">
+</head>
+
+<body ng-controller="ToDoController as todo" ng-cloak>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="images/lightbulb.svg" alt="logo">
+        <h1>To Do or Not To Do</h1>
+        <video loop muted autoplay class="fullscreen-bg__video">
+            <source src="images/writing.mp4" type="video/mp4">
+        </video>
+      </div>
+      <form name="toDoForm" novalidate ng-submit="toDoForm.$valid && todo.formSubmit()" ng-cloak>
+        <input class="user-input" ng-model="todo.submittedToDo" type="text" name="item" placeholder="What needs to be done?">
+        <button type="submit" name="submit">Submit</button>
+      </form>
+    </header>
+    <main>
+      <nav>
+        <ul>
+          <li>Items Left <span>{{todo.count}}</span></li>
+          <li><a href="#" class="active" ng-click="checkFilter = {checked}">All</a></li>
+          <li><a href="#" ng-click="checkFilter = {checked: false}">Active</a></li>
+          <li><a href="#" ng-click="checkFilter = {checked: true}">Completed</a></li>
+          <li><a href="#" ng-click="todo.removeAll()">Clear Completed</a></li>
+        </ul>
+      </nav>
+      <div class="item-container" ng-repeat="item in todo.todos | filter: checkFilter" ng-cloak>
+        <div class="check" ng-click="todo.check(item)"><i ng-show="item.checked" class="fa fa-check" aria-hidden="true"></i></div>
+        <h3 inline-edit="item.todo"
+          inline-edit-placeholder="Type your value here"
+          inline-edit-btn-edit=""
+          inline-edit-on-blur="save"
+          inline-edit-on-click
+          class="done-{{item.checked}}">
+        </h3>
+        <p ng-click="todo.remove(item)">X</p>
+      </div>
+    </main>
+  </div>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.js"></script> -->
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="bower_components/ng-inline-edit/dist/ng-inline-edit.min.js"></script>
+    <!-- <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script> -->
+    <!-- <script src="lib/js/vendor.min.js"></script> -->
+    <!-- <script src="lib/js/app.js"></script> -->
+    <script src="src/js/app.js"></script>
+    <script src="src/js/service/storage.js"></script>
+</body>
+
+</html>

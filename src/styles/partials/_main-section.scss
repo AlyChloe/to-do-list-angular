@@ -1,0 +1,48 @@
+main {
+  width: 60%;
+  margin: 0 auto;
+
+  .item-container {
+    overflow: hidden;
+    padding: 10px 0;
+
+    .check {
+      float: left;
+      margin-right: 30px;
+      width: 46px;
+      height: 46px;
+      background: #50757F;
+
+      .fa {
+        font-size: 30px;
+        color: #fff;
+        padding: 8px;
+      }
+    }
+
+    h3 {
+      float: left;
+      font-size: 35px;
+      padding-top: 5px;
+      font-weight: 300;
+      color: #50757F;
+
+      .ng-inline-edit__input {
+        font-size: 35px;
+        font-weight: bold;
+      }
+    }
+
+    .done-true {
+      text-decoration: line-through;
+    }
+
+    p {
+      float: right;
+      font-size: 35px;
+      font-weight: 100;
+      padding-top: 7px;
+      color: #d03e00;
+    }
+  }
+}
